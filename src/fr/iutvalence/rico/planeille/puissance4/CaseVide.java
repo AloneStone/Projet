@@ -1,9 +1,10 @@
 package fr.iutvalence.rico.planeille.puissance4;
 
-public class CaseVide extends Case{
-	
-	public static final String Vide = "V";
-	
-	//TODO définir attributs/méthodes
+/* TODO Ã€ reprendre comme un enum plutÃ´t qu'un jeu d'hÃ©ritage. */
+/* TODO JAVADOC. */
+public class CaseVide extends Case {
+    /* TODO JAVADOC. */
+    public static final String Vide = "V";
+    //TODO
 
 }

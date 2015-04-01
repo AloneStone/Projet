@@ -1,29 +1,32 @@
 package fr.iutvalence.rico.planeille.puissance4;
 
 /**
- * @author ricos
+ * TODO JAVADOC.
  *
+ * @author ricos
+ * @version TODO
  */
-public class Joueur 
-{
-	private final String nom;
-	private final Pion pion;
-	
-	public Joueur()
-	{
-		this.nom= "J1";
-		//TODO constructeurs
-	}
-	
-	public Joueur(String n)
-	{
-		this.nom = n;
-		//TODO constructeurs
-	}
-	
-	//TODO redéfinir les méthodes du type object
-//	public boolean equals(Joueur j)
-//	{
-//		if (j.nom ==this)
-//	}
+public class Joueur {
+    /* TODO JAVADOC. */
+    private final String nom;
+    /* TODO JAVADOC. */
+    private final Pion   pion;
+
+    /* TODO JAVADOC. */
+    public Joueur() {
+        this("J1");
+        /* TODO Initialiser le pion. */
+    }
+
+    /* TODO JAVADOC. */
+    public Joueur(String n) {
+        this.nom = n;
+        /* TODO Initialiser le pion. */
+    }
+
+    //TODO redï¿½finir les mï¿½thodes du type object. Anthony : POURQUOI ?
+    //	public boolean equals(Joueur j)
+    //	{
+    //		if (j.nom ==this)
+    //	}
 }

@@ -1,11 +1,7 @@
 package fr.iutvalence.rico.planeille.puissance4;
 
-/**
- * @author ricos
- *
- */
+/* TODO Ã€ reprendre comme un enum plutÃ´t qu'un jeu d'hÃ©ritage. */
+/* TODO JAVADOC. */
 public abstract class Case {
-	
-	//TODO définir les attributs et méthodes
-
+    //TODO
 }
