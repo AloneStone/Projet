@@ -2,4 +2,4 @@
  * Information of package
  */
 
-package fr.iutvalence.rico.planeille.puissanceQuatre;
+package fr.iutvalence.rico.planeille.puissancequatre;

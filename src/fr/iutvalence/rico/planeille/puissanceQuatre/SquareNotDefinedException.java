@@ -1,4 +1,4 @@
-package fr.iutvalence.rico.planeille.puissanceQuatre;
+package fr.iutvalence.rico.planeille.puissancequatre;
 
 /**
  * This class represents the exception of a square not defined

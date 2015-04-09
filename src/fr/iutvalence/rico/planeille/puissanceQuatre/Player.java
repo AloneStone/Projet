@@ -1,4 +1,4 @@
-package fr.iutvalence.rico.planeille.puissanceQuatre;
+package fr.iutvalence.rico.planeille.puissancequatre;
 
 /**
  * This class represents a player
