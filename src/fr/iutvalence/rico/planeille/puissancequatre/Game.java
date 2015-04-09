@@ -7,5 +7,5 @@ package fr.iutvalence.rico.planeille.puissancequatre;
  * @version TODO
  */
 public class Game {
-		//TODO mettre les méthodes du jeu
+    //TODO mettre les méthodes du jeu
 }

@@ -1,41 +1,31 @@
 package fr.iutvalence.rico.planeille.puissancequatre;
 
 /**
- * This class represents a player
+ * Player: name and piece.
  *
  * @author ricos
+ * @version TODO
  */
 public class Player {
-    /**
-     * Name of player
-     */
+    /** Player's name. */
     private final String name;
-    
-    /**
-     * The color of square 
-     */
-    private final Square square;
+    /** Piece's color. */
+    private final Piece  m_piece;
 
     /**
-     * Constructor of Player
-     * @param n: the name of player
-     * @param s: the color of piece of player
+     * Constructor of Player.
+     *
+     * @param n the name of player
+     * @param s the color of piece of player
      */
-    public Player(String n, Square s) {
+    public Player(String n, Piece s) {
         this.name = n;
-        this.square = s;
+        this.m_piece = s;
     }
-    /**
-     * ToString redefined for player
-     * @return a String which represents the player
-     */
-    public String ToString()
-    {
-    	return "Nom du joueur : "+name+"  couleur : "+square;
+
+    /* TODO Translate. */
+    @Override
+    public String toString() {
+        return "Nom du joueur : " + name + "  couleur : " + m_piece;
     }
-    //TODO To check the name of 2 players. 
-    //	public boolean equals(Joueur j)
-    //	{
-    //		if (j.nom ==this)
-    //	}
 }
