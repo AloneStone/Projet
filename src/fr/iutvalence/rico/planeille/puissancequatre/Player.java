@@ -1,4 +1,4 @@
-package fr.iutvalence.rico.planeille.puissancequatre;
+	package fr.iutvalence.rico.planeille.puissancequatre;
 
 /**
  * Player: name and piece.
@@ -22,10 +22,8 @@ public class Player {
         this.name = n;
         this.piece = s;
     }
-
-    /* TODO Translate. */
     @Override
     public String toString() {
-        return "Nom du joueur : " + name + "  couleur : " + piece;
+        return "Name of Gamer : " + name + "  couleur : " + piece;
     }
 }

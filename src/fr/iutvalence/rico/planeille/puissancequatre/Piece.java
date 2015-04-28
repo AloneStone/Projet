@@ -4,7 +4,7 @@ package fr.iutvalence.rico.planeille.puissancequatre;
  * The three available pieces.
  *
  * @author ricos
- * @version 0.1
+ * @version 1.0.0
  */
 public enum Piece {
     /** Empty square. */
@@ -14,10 +14,13 @@ public enum Piece {
     /** Yellow piece. */
     YELLOWPIECE("Y");
 
-    /* TODO JAVADOC. */
+    /**String representation of Piece*/
     private final String display;
 
-    /* TODO JAVADOC. */
+    /**Constructor
+     * 
+     * @param disp String representation of Piece
+     */
     Piece(final String disp) {
         display = disp;
     }
@@ -25,5 +28,12 @@ public enum Piece {
     @Override
     public String toString() {
         return display;
+    }
+    
+    @Override
+    // TODO resolve the problem
+    public boolean equals(Piece piece)
+    {
+    	return this.display == piece.display;
     }
 }
