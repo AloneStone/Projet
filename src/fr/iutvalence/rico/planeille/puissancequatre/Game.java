@@ -7,4 +7,7 @@ package fr.iutvalence.rico.planeille.puissancequatre;
  * @version 1.0.0
  */
 public class Game {
+	
+	
+
 }

@@ -8,7 +8,7 @@ package fr.iutvalence.rico.planeille.puissancequatre;
  */
 public enum Piece {
     /** Empty square. */
-    EMPTYSQUARE("V"),
+    EMPTYSQUARE("E"),
     /** Red piece. */
     REDPIECE("R"),
     /** Yellow piece. */
@@ -28,12 +28,5 @@ public enum Piece {
     @Override
     public String toString() {
         return display;
-    }
-    
-    @Override
-    // TODO resolve the problem
-    public boolean equals(Piece piece)
-    {
-    	return this.display == piece.display;
     }
 }
