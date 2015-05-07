@@ -31,9 +31,8 @@ public enum Piece {
     }
     
     @Override
-    // TODO resolve the problem
     public boolean equals(Piece piece)
     {
-    	return this.display == piece.display;
+    	return display
     }
 }
