@@ -16,7 +16,10 @@ public class Grid {
 
     /** Grid of Game represented by a table of piece*/
     private Piece[][] grid;
+    
 
+    
+    
     /**Constructor of Grid initialized with empty square*/
     public Grid() {
         this.grid = new Piece[NB_LINE][NB_COLUMN];
