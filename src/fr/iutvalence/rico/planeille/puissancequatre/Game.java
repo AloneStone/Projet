@@ -8,6 +8,10 @@ package fr.iutvalence.rico.planeille.puissancequatre;
  */
 public class Game {
 	
+	Piece playerTurn;
+	Grid grid;
 	
+	
+	public Game()
 
 }

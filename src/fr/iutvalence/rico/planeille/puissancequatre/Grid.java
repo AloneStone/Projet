@@ -10,9 +10,10 @@ public class Grid {
     /**constant number of column and line*/
     private static final int NB_COLUMN = 7;
     private static final int NB_LINE = 6;
+
     /**constant direction to verify the piece alignment*/
-    private static final int[][] VERIFY_DIRECTION = {{0,1},{0,-1},{1,0},{-1,0},
-    	{1,1},{-1,-1},{1,-1},{-1,1}};
+    private static final int[][] VERIFY_DIRECTION = {{0,1},{0,-1},{-1,1},{1,-1},{1,1},{-1,-1},{1,0}};
+
     /** Grid of Game represented by a table of piece*/
     private Piece[][] grid;
 
@@ -41,41 +42,47 @@ public class Grid {
     	this.grid[line][column] = piece;
     	
     }
-    //TODO finir la méthode de verification, algo en cours de réflexion
+
+	 //TODO finir la mÃ©thode de verification, algo en cours de rÃ©flexion (verification alignement autour de la piece jouÃ© avec VERIFY_DIRECTION)
     /**
      * Verify the alignment 
      * @return True if 4 Piece are align , false else
      */
-	public boolean search4Piece()
+	public boolean search4Piece(int line, int column)
 	{
-		 int nbPieces;
-		 Piece couleur = Piece.EMPTYSQUARE;
-		for (int line = NB_LINE-1; line >= 0; line--)
-		{
-			nbPieces =0;
-			for(int column = 0;column < NB_COLUMN-2;column++)
+		 int nbPieces = 0;
+		 int verifyLine, verifyColumn;
+		 for (int nTest = 0; nTest < 7 ;nTest++)
+		 {
+			 if (nTest% 2 == 0)
+				 nbPieces = 0;
+			 
+			while( nbPieces != 3)
 			{
-				if(!this.grid[line][column].equals(Piece.EMPTYSQUARE))
+				verifyLine = line+VERIFY_DIRECTION[nTest][0];
+				 verifyColumn = column + VERIFY_DIRECTION[nTest][1];
+				 if((verifyLine < 0 && verifyLine >=NB_LINE) || (verifyColumn < 0 && verifyColumn >= NB_COLUMN))
+					 break;
+				if (winDirection(verifyLine, verifyColumn, nTest))
 				{
-					
-					if(this.grid[line][column].equals(this.grid[line][column+1]))
-						nbPieces++;
-					else 
-					{
-						nbPieces =0;
-						couleur = this.grid[line][column];
-					}
-					
+					nbPieces++;
 				}
-				else
-					nbPieces=0;
-				if (nbPieces ==3)
-					return true
+				else 
+					break;
+					
 			}
-		}
+			if (nbPieces ==3)
+				return true;
+		 }
+		 return false;
+		 
 	}
 	
-	
+	public boolean winDirection (int verifyLine, int verifyColumn, int nDirection )
+	{
+
+		return this.grid[verifyLine][verifyColumn].equals(this.grid[verifyLine+VERIFY_DIRECTION[nDirection][0]][verifyColumn+VERIFY_DIRECTION[nDirection][1]]);
+	}
 	
     
     @Override
