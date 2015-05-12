@@ -23,6 +23,9 @@ public class Game {
 		this.grid = new Grid();
 	}
 	
+	/**
+	 * 
+	 */
 	public void changeTurn()
 	{
 		if (playerTurn == Piece.REDPIECE)
@@ -31,9 +34,14 @@ public class Game {
 			this.playerTurn = Piece.REDPIECE;
 	}
 	
+	/**
+	 * 
+	 * @return
+	 */
 	public Piece play()
 	{
 		int turnCounter = 0;
+		int line;
 		Scanner columnChoice = new Scanner(System.in);
 		boolean win = false;
 		this.grid.toString();
@@ -41,6 +49,15 @@ public class Game {
 		{
 			System.out.println("Choose the column : ");
 			int column = columnChoice.nextInt();
+			
+			if (turnCounter %2 == 0)
+				line = Stack(column, Piece.REDPIECE);
+			else
+				line = Stack(column, Piece.YELLOWPIECE);
+			
+			search4Piece(line, column);
+			
+			
 			
 			this.grid.toString();
 			
