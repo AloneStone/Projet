@@ -43,7 +43,6 @@ public class Grid {
     	
     }
 
-	 //TODO finir la méthode de verification, algo en cours de réflexion (verification alignement autour de la piece joué avec VERIFY_DIRECTION)
     /**
      * Verify the alignment 
      * @return True if 4 Piece are align , false else
@@ -56,11 +55,13 @@ public class Grid {
 		 {
 			 if (nTest% 2 == 0)
 				 nbPieces = 0;
+			 verifyLine = line;
+			 verifyColumn =column;
 			 
 			while( nbPieces != 3)
 			{
-				verifyLine = line+VERIFY_DIRECTION[nTest][0];
-				 verifyColumn = column + VERIFY_DIRECTION[nTest][1];
+				verifyLine += VERIFY_DIRECTION[nTest][0];
+				 verifyColumn += VERIFY_DIRECTION[nTest][1];
 				 if((verifyLine < 0 && verifyLine >=NB_LINE) || (verifyColumn < 0 && verifyColumn >= NB_COLUMN))
 					 break;
 				if (winDirection(verifyLine, verifyColumn, nTest))
@@ -77,7 +78,13 @@ public class Grid {
 		 return false;
 		 
 	}
-	
+	/**
+	 * 
+	 * @param verifyLine
+	 * @param verifyColumn
+	 * @param nDirection
+	 * @return
+	 */
 	public boolean winDirection (int verifyLine, int verifyColumn, int nDirection )
 	{
 
