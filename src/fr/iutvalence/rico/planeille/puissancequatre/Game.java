@@ -31,6 +31,7 @@ public class Game {
 			this.playerTurn = Piece.REDPIECE;
 	}
 	
+	
 	public Piece play()
 	{
 		int turnCounter = 0;
