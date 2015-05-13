@@ -60,8 +60,7 @@ public class Grid {
 			 
 			while( nbPieces != 3)
 			{
-				verifyLine += VERIFY_DIRECTION[nTest][0];
-				 verifyColumn += VERIFY_DIRECTION[nTest][1];
+				
 				 if((verifyLine < 0 && verifyLine >=NB_LINE) || (verifyColumn < 0 && verifyColumn >= NB_COLUMN))
 					 break;
 				if (winDirection(verifyLine, verifyColumn, nTest))
@@ -70,6 +69,8 @@ public class Grid {
 				}
 				else 
 					break;
+				verifyLine += VERIFY_DIRECTION[nTest][0];
+				verifyColumn += VERIFY_DIRECTION[nTest][1];
 					
 			}
 			if (nbPieces ==3)

@@ -36,9 +36,9 @@ public class Game {
 	{
 		int turnCounter = 0;
 		int line;
+		System.out.println(this.grid);
 		Scanner columnChoice = new Scanner(System.in);
 		boolean win = false;
-		this.grid.toString();
 		while(!win && turnCounter != 42)
 		{
 			changeTurn();
@@ -47,7 +47,7 @@ public class Game {
 
 			line = this.grid.stack(column-1,playerTurn);	
 			System.out.println(this.grid);
-			win = this.grid.search4Piece(line,column);
+			win = this.grid.search4Piece(line,column-1);
 		}
 		columnChoice.close();
 		
