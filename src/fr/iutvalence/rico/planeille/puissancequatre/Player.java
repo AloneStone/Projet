@@ -22,8 +22,11 @@ public class Player {
         this.name = n;
         this.piece = s;
     }
-    @Override
+    public Piece getPiece() {
+		return piece;
+	}
+	@Override
     public String toString() {
-        return "Name of Gamer : " + name + "  couleur : " + piece;
+        return "Name of Gamer : " + name + "  couleur : " + piece; 
     }
 }

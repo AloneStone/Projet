@@ -34,17 +34,27 @@ public class Game {
 	public Piece play()
 	{
 		int turnCounter = 0;
+		int line;
 		Scanner columnChoice = new Scanner(System.in);
 		boolean win = false;
 		this.grid.toString();
 		while(!win && turnCounter != 42)
 		{
+			changeTurn();
 			System.out.println("Choose the column : ");
 			int column = columnChoice.nextInt();
-			
-			this.grid.toString();
-			
+
+			line = this.grid.stack(column-1,playerTurn);	
+			System.out.println(this.grid);
+			win = this.grid.search4Piece(line,column);
 		}
+		columnChoice.close();
+		
+		if (win)
+			return this.playerTurn;
+		return Piece.EMPTYSQUARE;
+			
+		
 	}
 
 }

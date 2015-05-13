@@ -32,7 +32,7 @@ public class Grid {
      * @param piece the color of the player
      */
     //TODO Exception
-    public void Stack(int column, Piece piece) /**throws IllegalPoisitionException*/{
+    public int stack(int column, Piece piece) /**throws IllegalPoisitionException*/{
     	int line;
     	for ( line = NB_LINE-1; line >= 0; line--)
     	{
@@ -40,7 +40,7 @@ public class Grid {
     			break;		
     	}
     	this.grid[line][column] = piece;
-    	
+    	return line;
     }
 
     /**
