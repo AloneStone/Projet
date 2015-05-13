@@ -1,5 +1,6 @@
 package fr.iutvalence.rico.planeille.puissancequatre;
 import java.util.ArrayList;
+import java.util.Random;
 import java.util.Scanner; 
 /**
  * TODO JAVADOC.
@@ -13,16 +14,42 @@ public class Game {
 	private ArrayList<Player> players;
 	private Grid grid ;
 	
-	
+	/**
+	 * Contructor of game
+	 */
 	public Game()
 	{
-		this.playerTurn = Piece.REDPIECE;
+		/**
+		 * Random number give the first player 
+		 */
+		Random rand = new Random();
+        int firstPlayerIndice = rand.nextInt(1);
+        this.playerTurn = Piece.REDPIECE;
+		if (firstPlayerIndice == 0)
+			this.playerTurn = Piece.YELLOWPIECE;
+		
+		/**
+		 * Create collection of player
+		 */
 		this.players = new ArrayList<Player>();
+		
+		//TODO Scanner
 		this.players.add(new Player("J1",Piece.REDPIECE));
 		this.players.add(new Player("J2",Piece.YELLOWPIECE));
 		this.grid = new Grid();
 	}
 	
+	/**
+	 * 
+	 * @return player list
+	 */
+	public ArrayList<Player> getPlayers() {
+		return players;
+	}
+
+	/**
+	 * Change the player turn
+	 */
 	public void changeTurn()
 	{
 		if (playerTurn == Piece.REDPIECE)
@@ -31,7 +58,10 @@ public class Game {
 			this.playerTurn = Piece.REDPIECE;
 	}
 	
-	
+	/**
+	 * Play the game
+	 * @return the winner color or emptysquare for draw 
+	 */
 	public Piece play()
 	{
 		int turnCounter = 0;

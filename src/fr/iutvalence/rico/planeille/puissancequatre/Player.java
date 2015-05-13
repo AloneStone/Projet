@@ -9,7 +9,8 @@
 public class Player {
     /** Player's name. */
     private final String name;
-    /** Piece's color. */
+    
+	/** Piece's color. */
     private final Piece  piece;
 
     /**
@@ -25,8 +26,12 @@ public class Player {
     public Piece getPiece() {
 		return piece;
 	}
+    
 	@Override
     public String toString() {
-        return "Name of Gamer : " + name + "  couleur : " + piece; 
+		String nameOfColor ="Yellow";
+		if (this.getPiece().equals(Piece.REDPIECE))
+			nameOfColor = "Red";
+        return "Name of Gamer : " + name + "  couleur : " + nameOfColor; 
     }
 }

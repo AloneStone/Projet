@@ -8,7 +8,7 @@ package fr.iutvalence.rico.planeille.puissancequatre;
  */
 public enum Piece {
     /** Empty square. */
-    EMPTYSQUARE("E"),
+    EMPTYSQUARE(" "),
     /** Red piece. */
     REDPIECE("R"),
     /** Yellow piece. */

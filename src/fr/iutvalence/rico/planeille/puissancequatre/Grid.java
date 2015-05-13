@@ -61,14 +61,13 @@ public class Grid {
 			while( nbPieces != 3)
 			{
 				
-				 if((verifyLine < 0 && verifyLine >=NB_LINE) || (verifyColumn < 0 && verifyColumn >= NB_COLUMN))
-					 break;
 				if (winDirection(verifyLine, verifyColumn, nTest))
 				{
 					nbPieces++;
 				}
 				else 
 					break;
+				
 				verifyLine += VERIFY_DIRECTION[nTest][0];
 				verifyColumn += VERIFY_DIRECTION[nTest][1];
 					
@@ -88,8 +87,13 @@ public class Grid {
 	 */
 	public boolean winDirection (int verifyLine, int verifyColumn, int nDirection )
 	{
-
-		return this.grid[verifyLine][verifyColumn].equals(this.grid[verifyLine+VERIFY_DIRECTION[nDirection][0]][verifyColumn+VERIFY_DIRECTION[nDirection][1]]);
+		//System.err.printf("%d/%d/%d%n", verifyLine, verifyColumn, nDirection);
+		int verifyLineNext = verifyLine+VERIFY_DIRECTION[nDirection][0];
+		int verifyColumnNext = verifyColumn+VERIFY_DIRECTION[nDirection][1];
+		//System.err.printf("%d/%d%n", verifyLineNext, verifyColumnNext);
+		if((verifyLineNext < 0 || verifyLineNext >=NB_LINE) || (verifyColumnNext < 0 || verifyColumnNext >= NB_COLUMN))
+			 return false;
+		return this.grid[verifyLine][verifyColumn].equals(this.grid[verifyLineNext][verifyColumnNext]);
 	}
 	
     
