@@ -1,5 +1,7 @@
 	package fr.iutvalence.rico.planeille.puissancequatre;
 
+import java.util.Scanner;
+
 /**
  * Player: name and piece.
  *
@@ -9,7 +11,8 @@
 public class Player {
     /** Player's name. */
     private final String name;
-    /** Piece's color. */
+    
+	/** Piece's color. */
     private final Piece  piece;
 
     /**
@@ -18,12 +21,32 @@ public class Player {
      * @param n the name of player
      * @param s the color of piece of player
      */
-    public Player(String n, Piece s) {
-        this.name = n;
+    public Player( Piece s) {
+    	
+    	Scanner scan = new Scanner(System.in);
+		System.out.println("Choose a name for player : ");
+		String namePlayer = scan.nextLine();
+        this.name = namePlayer;
         this.piece = s;
+        //scan.close();
     }
-    @Override
+    /**
+     * 
+     * @return piece
+     */
+    public Piece getPiece() {
+		return piece;
+	}
+     
+    /**
+     * 
+     */
+	@Override
     public String toString() {
-        return "Name of Gamer : " + name + "  couleur : " + piece;
+		String nameOfColor ="Yellow";
+		if (this.getPiece().equals(Piece.REDPIECE))
+			nameOfColor = "Red";
+        return "Name of Gamer : " + name + "  color : " + nameOfColor; 
     }
+	
 }

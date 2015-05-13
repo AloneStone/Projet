@@ -1,6 +1,8 @@
 package fr.iutvalence.rico.planeille.puissancequatre;
 import java.util.ArrayList;
+import java.util.Random;
 import java.util.Scanner; 
+
 /**
  * TODO JAVADOC.
  *
@@ -13,56 +15,87 @@ public class Game {
 	private ArrayList<Player> players;
 	private Grid grid ;
 	
-	
+	/**
+	 * Contructor of game
+	 */
 	public Game()
 	{
-		this.playerTurn = Piece.REDPIECE;
+		/**
+		 * Random number give the first player 
+		 */
+		Random rand = new Random();
+        int firstPlayerIndice = rand.nextInt(1);
+        this.playerTurn = Piece.REDPIECE;
+		if (firstPlayerIndice == 0)
+			this.playerTurn = Piece.YELLOWPIECE;
+		
+		/**
+		 * Create collection of player
+		 */
 		this.players = new ArrayList<Player>();
-		this.players.add(new Player("J1",Piece.REDPIECE));
-		this.players.add(new Player("J2",Piece.YELLOWPIECE));
+		System.out.print("For the red piece ");
+		this.players.add(new Player(Piece.REDPIECE));
+		System.out.print("For the yellow piece ");
+		this.players.add(new Player(Piece.YELLOWPIECE));
+
 		this.grid = new Grid();
 	}
 	
 	/**
 	 * 
+	 * @return player list
+	 */
+	public ArrayList<Player> getPlayers() {
+		return players;
+	}
+
+	/**
+	 * Change the player turn
 	 */
 	public void changeTurn()
 	{
 		if (playerTurn == Piece.REDPIECE)
+		{
 			this.playerTurn = Piece.YELLOWPIECE;
+			System.out.println("It's a Yellow piece's turn");
+		}
 		else
+			{
 			this.playerTurn = Piece.REDPIECE;
+			System.out.println("It's a red piece's turn");
+			}
 	}
 	
 	/**
-	 * 
-	 * @return
+	 * Play the game
+	 * @return the winner color or emptysquare for draw 
 	 */
 	public Piece play()
 	
 	{
 		int turnCounter = 0;
 		int line;
+
+		System.out.println(this.grid);
 		Scanner columnChoice = new Scanner(System.in);
 		boolean win = false;
-		this.grid.toString();
 		while(!win && turnCounter != 42)
 		{
-			System.out.println("Choose the column : ");
+			changeTurn();
+			System.out.println(" choose the column : ");
 			int column = columnChoice.nextInt();
-			
-			if (turnCounter %2 == 0)
-				line = Stack(column, Piece.REDPIECE);
-			else
-				line = Stack(column, Piece.YELLOWPIECE);
-			
-			search4Piece(line, column);
-			
-			
-			
-			this.grid.toString();
-			
+
+			line = this.grid.stack(column-1,playerTurn);	
+			System.out.println(this.grid);
+			win = this.grid.search4Piece(line,column-1);
 		}
+		columnChoice.close();
+		
+		if (win)
+			return this.playerTurn;
+		return Piece.EMPTYSQUARE;
+			
+		
 	}
 
 }

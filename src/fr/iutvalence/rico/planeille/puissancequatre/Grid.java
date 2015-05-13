@@ -6,6 +6,7 @@ package fr.iutvalence.rico.planeille.puissancequatre;
  * @author ricos
  * @version 1.0.0
  */
+
 public class Grid {
     /**constant number of column and line*/
     private static final int NB_COLUMN = 7;
@@ -16,9 +17,6 @@ public class Grid {
 
     /** Grid of Game represented by a table of piece*/
     private Piece[][] grid;
-    
-
-    
     
     /**Constructor of Grid initialized with empty square*/
     public Grid() {
@@ -35,7 +33,7 @@ public class Grid {
      * @param piece the color of the player
      */
     //TODO Exception
-    public int Stack(int column, Piece piece) /**throws IllegalPoisitionException*/{
+    public int stack(int column, Piece piece) /**throws IllegalPoisitionException*/{
     	int line;
     	for ( line = NB_LINE-1; line >= 0; line--)
     	{
@@ -44,7 +42,7 @@ public class Grid {
     	}
     	this.grid[line][column] = piece;
     	return line;
-    	
+
     }
 
     /**
@@ -64,16 +62,16 @@ public class Grid {
 			 
 			while( nbPieces != 3)
 			{
-				verifyLine += VERIFY_DIRECTION[nTest][0];
-				 verifyColumn += VERIFY_DIRECTION[nTest][1];
-				 if((verifyLine < 0 && verifyLine >=NB_LINE) || (verifyColumn < 0 && verifyColumn >= NB_COLUMN))
-					 break;
+				
 				if (winDirection(verifyLine, verifyColumn, nTest))
 				{
 					nbPieces++;
 				}
 				else 
 					break;
+				
+				verifyLine += VERIFY_DIRECTION[nTest][0];
+				verifyColumn += VERIFY_DIRECTION[nTest][1];
 					
 			}
 			if (nbPieces ==3)
@@ -91,8 +89,13 @@ public class Grid {
 	 */
 	public boolean winDirection (int verifyLine, int verifyColumn, int nDirection )
 	{
-
-		return this.grid[verifyLine][verifyColumn].equals(this.grid[verifyLine+VERIFY_DIRECTION[nDirection][0]][verifyColumn+VERIFY_DIRECTION[nDirection][1]]);
+		//System.err.printf("%d/%d/%d%n", verifyLine, verifyColumn, nDirection);
+		int verifyLineNext = verifyLine+VERIFY_DIRECTION[nDirection][0];
+		int verifyColumnNext = verifyColumn+VERIFY_DIRECTION[nDirection][1];
+		//System.err.printf("%d/%d%n", verifyLineNext, verifyColumnNext);
+		if((verifyLineNext < 0 || verifyLineNext >=NB_LINE) || (verifyColumnNext < 0 || verifyColumnNext >= NB_COLUMN))
+			 return false;
+		return this.grid[verifyLine][verifyColumn].equals(this.grid[verifyLineNext][verifyColumnNext]);
 	}
 	
     
