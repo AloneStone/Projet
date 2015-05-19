@@ -72,7 +72,7 @@ public class Game {
 		else
 			{
 			this.playerTurn = Piece.REDPIECE;
-			System.out.println("It's a red piece's turn");
+			System.out.println("It's a Red piece's turn");
 			}
 	}
 	
@@ -85,8 +85,8 @@ public class Game {
 	
 	{
 		int turnCounter = 0;
-		int line;
-		boolean InGrid = false;
+		int line = 0;
+		boolean inGrid = false;
 
 		System.out.println(this.grid);
 		Scanner columnChoice = new Scanner(System.in);
@@ -108,16 +108,17 @@ public class Game {
 				if (column-1 < 0 ||  column-1 > 6)
 					throw new IllegalGridPositionException();
 				else
-					InGrid = true;
+					inGrid = true;
 				line = this.grid.stack(column-1,playerTurn);
 				}
 				catch(IllegalGridPositionException | FullColumnException e)
 			{
+					inGrid = false;
 				System.out.println(" Illegal column Choice, try again! ");
 				column = columnChoice.nextInt();
 			}
 			}
-			while ( InGrid == false);
+			while ( inGrid == false);
 			
 			
 			System.out.println(this.grid);

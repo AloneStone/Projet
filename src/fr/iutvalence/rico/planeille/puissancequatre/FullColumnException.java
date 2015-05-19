@@ -4,7 +4,7 @@ public class FullColumnException extends Exception{
 	
 	public FullColumnException()
 	{
-		System.out.println("The column is full, try again !");
+		System.out.println("The column is full !");
 	}
 
 }
