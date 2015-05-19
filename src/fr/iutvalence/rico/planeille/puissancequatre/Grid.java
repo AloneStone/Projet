@@ -32,14 +32,16 @@ public class Grid {
      * @param column choice of the player
      * @param piece the color of the player
      */
-    //TODO Exception
-    public int stack(int column, Piece piece) /**throws IllegalPoisitionException*/{
+    
+    public int stack(int column, Piece piece) throws FullColumnException{
     	int line;
     	for ( line = NB_LINE-1; line >= 0; line--)
     	{
     		if(this.grid[line][column].equals(Piece.EMPTYSQUARE))
     			break;		
     	}
+    	if (line < 0)
+    		throw new FullColumnException();
     	this.grid[line][column] = piece;
     	return line;
 
@@ -81,25 +83,34 @@ public class Grid {
 		 
 	}
 	/**
-	 * 
-	 * @param verifyLine
-	 * @param verifyColumn
-	 * @param nDirection
-	 * @return
+	 * Verify the same color of next piece in the nDirection
+	 * @param verifyLine  line of current piece
+	 * @param verifyColumn  column of current piece
+	 * @param nDirection  number direction to verify
+	 * @return  True if the next piece is the same color of current piece
 	 */
-	public boolean winDirection (int verifyLine, int verifyColumn, int nDirection )
+	public boolean winDirection (int verifyLine, int verifyColumn, int nDirection ) 
 	{
-		//System.err.printf("%d/%d/%d%n", verifyLine, verifyColumn, nDirection);
 		int verifyLineNext = verifyLine+VERIFY_DIRECTION[nDirection][0];
 		int verifyColumnNext = verifyColumn+VERIFY_DIRECTION[nDirection][1];
-		//System.err.printf("%d/%d%n", verifyLineNext, verifyColumnNext);
-		if((verifyLineNext < 0 || verifyLineNext >=NB_LINE) || (verifyColumnNext < 0 || verifyColumnNext >= NB_COLUMN))
-			 return false;
+		try 
+		{
+			if((verifyLineNext < 0 || verifyLineNext >=NB_LINE) || (verifyColumnNext < 0 || verifyColumnNext >= NB_COLUMN))
+				 throw new IllegalGridPositionException();
+		}
+		catch (IllegalGridPositionException e)
+		{
+			return false;
+		}
+		
 		return this.grid[verifyLine][verifyColumn].equals(this.grid[verifyLineNext][verifyColumnNext]);
 	}
 	
-    
+
     @Override
+    /**
+     * return string to represent the grid in the console
+     */
     public String toString(){
     	 String gridRepresentation ="";
     	 for (int line = 0; line < NB_LINE; line++) {

@@ -28,7 +28,7 @@ public class Player {
 		String namePlayer = scan.nextLine();
         this.name = namePlayer;
         this.piece = s;
-        //scan.close();
+        
     }
     /**
      * 
@@ -39,7 +39,7 @@ public class Player {
 	}
      
     /**
-     * 
+     *  Return a string with the name eand the color of player
      */
 	@Override
     public String toString() {

@@ -10,9 +10,19 @@ import java.util.Scanner;
  * @version 1.0.0
  */
 public class Game {
-	
+	/**
+	 * The turn of player
+	 */
 	private Piece playerTurn;
+	
+	/**
+	 * The 2 players
+	 */
 	private ArrayList<Player> players;
+	
+	/**
+	 * The grid of the game
+	 */
 	private Grid grid ;
 	
 	/**
@@ -37,12 +47,12 @@ public class Game {
 		this.players.add(new Player(Piece.REDPIECE));
 		System.out.print("For the yellow piece ");
 		this.players.add(new Player(Piece.YELLOWPIECE));
-
+		
 		this.grid = new Grid();
 	}
 	
 	/**
-	 * 
+	 *  Give the players
 	 * @return player list
 	 */
 	public ArrayList<Player> getPlayers() {
@@ -69,12 +79,14 @@ public class Game {
 	/**
 	 * Play the game
 	 * @return the winner color or emptysquare for draw 
+	 * 
 	 */
 	public Piece play()
 	
 	{
 		int turnCounter = 0;
 		int line;
+		boolean InGrid = false;
 
 		System.out.println(this.grid);
 		Scanner columnChoice = new Scanner(System.in);
@@ -83,9 +95,31 @@ public class Game {
 		{
 			changeTurn();
 			System.out.println(" choose the column : ");
+			
 			int column = columnChoice.nextInt();
-
-			line = this.grid.stack(column-1,playerTurn);	
+			
+			/**
+			 * verify the colum choice, if it is in the grid
+			 */
+			do
+			{
+				try
+				{
+				if (column-1 < 0 ||  column-1 > 6)
+					throw new IllegalGridPositionException();
+				else
+					InGrid = true;
+				line = this.grid.stack(column-1,playerTurn);
+				}
+				catch(IllegalGridPositionException | FullColumnException e)
+			{
+				System.out.println(" Illegal column Choice, try again! ");
+				column = columnChoice.nextInt();
+			}
+			}
+			while ( InGrid == false);
+			
+			
 			System.out.println(this.grid);
 			win = this.grid.search4Piece(line,column-1);
 		}
