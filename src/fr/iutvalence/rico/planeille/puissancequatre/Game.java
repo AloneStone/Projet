@@ -81,22 +81,22 @@ public class Game {
 	 * @return the winner color or emptysquare for draw 
 	 * 
 	 */
-	public Piece play()
+	public Piece play(int column)
 	
 	{
 		int turnCounter = 0;
 		int line = 0;
 		boolean inGrid = false;
 
-		System.out.println(this.grid);
-		Scanner columnChoice = new Scanner(System.in);
+		//System.out.println(this.grid);
+		//Scanner columnChoice = new Scanner(System.in);
 		boolean win = false;
 		while(!win && turnCounter != 42)
 		{
 			changeTurn();
-			System.out.println(" choose the column : ");
+			//System.out.println(" choose the column : ");
 			
-			int column = columnChoice.nextInt();
+			//int column = columnChoice.nextInt();
 			
 			/**
 			 * verify the colum choice, if it is in the grid
@@ -114,8 +114,9 @@ public class Game {
 				catch(IllegalGridPositionException | FullColumnException e)
 			{
 					inGrid = false;
+					
 				System.out.println(" Illegal column Choice, try again! ");
-				column = columnChoice.nextInt();
+				//column = columnChoice.nextInt();
 			}
 			}
 			while ( inGrid == false);
@@ -124,7 +125,7 @@ public class Game {
 			System.out.println(this.grid);
 			win = this.grid.search4Piece(line,column-1);
 		}
-		columnChoice.close();
+		//columnChoice.close();
 		
 		if (win)
 			return this.playerTurn;

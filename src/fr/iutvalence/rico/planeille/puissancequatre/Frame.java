@@ -33,14 +33,13 @@ public class Frame extends JFrame implements ActionListener{
 	private JPanel gameGrid;
 	private JSplitPane gamePanel;
 
-	
-
 	  public Frame(){        
 
 		  
-				
+		  		Game game = new Game();
+		  
 				this.setTitle("Puissance 4");
-				this.setSize(300, 300);
+				this.setSize(400, 400);
 				this.setResizable(true);
 				this.setLocationRelativeTo(null);
 			    this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -94,10 +93,12 @@ public class Frame extends JFrame implements ActionListener{
 		
 	    
 	  
-	  public void actionPerformed(ActionEvent arg0) {  
+	  public void actionPerformed(ActionEvent e) {  
 		  
-	  Grid.stack() 
-
+		  Object source = e.getSource();
+		  
+		   
+		 ((Button) source).getNumberOfColumn();
 	  } 
 	  
 	  
