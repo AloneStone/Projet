@@ -4,11 +4,10 @@ public class Main {
 
 	public static void main(String[] args) {
 		
-		
-	/*
-	 * 	Player J1 = game.getPlayers().get(0);
+		Game game = new Game();
+		Player J1 = game.getPlayers().get(0);
 		Player J2 = game.getPlayers().get(1);
-	 * Piece winner = game.play();
+	  Piece winner = game.play();
 		if(winner.equals(Piece.EMPTYSQUARE))
 			System.out.println("Nobody won");
 		else 
@@ -20,10 +19,10 @@ public class Main {
 			else
 				System.out.println(J2);
 			
-		}*/
+		}
 		
 		
-		Frame fen = new Frame();
+		//Frame fen = new Frame();
 		
 		
 		

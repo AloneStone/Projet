@@ -1,4 +1,5 @@
 package fr.iutvalence.rico.planeille.puissancequatre;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner; 
@@ -28,6 +29,9 @@ public class Game {
 	/**
 	 * Contructor of game
 	 */
+	
+	private Frame frameGame;
+	
 	public Game()
 	{
 		/**
@@ -49,6 +53,8 @@ public class Game {
 		this.players.add(new Player(Piece.YELLOWPIECE));
 		
 		this.grid = new Grid();
+		
+		this.frameGame =new Frame();
 	}
 	
 	/**
@@ -81,7 +87,7 @@ public class Game {
 	 * @return the winner color or emptysquare for draw 
 	 * 
 	 */
-	public Piece play(int column)
+	public Piece play()
 	
 	{
 		int turnCounter = 0;
@@ -93,11 +99,12 @@ public class Game {
 		boolean win = false;
 		while(!win && turnCounter != 42)
 		{
-			changeTurn();
+			this.changeTurn();
 			//System.out.println(" choose the column : ");
+			this.frameGame.waitClick();
+			int columnChoice = this.frameGame.getColumnChoice();
 			
-			//int column = columnChoice.nextInt();
-			
+
 			/**
 			 * verify the colum choice, if it is in the grid
 			 */
@@ -105,25 +112,26 @@ public class Game {
 			{
 				try
 				{
-				if (column-1 < 0 ||  column-1 > 6)
+				if (columnChoice < 0 ||  columnChoice > 6)
 					throw new IllegalGridPositionException();
 				else
 					inGrid = true;
-				line = this.grid.stack(column-1,playerTurn);
+				line = this.grid.stack(columnChoice,playerTurn);
 				}
 				catch(IllegalGridPositionException | FullColumnException e)
 			{
 					inGrid = false;
 					
-				System.out.println(" Illegal column Choice, try again! ");
-				//column = columnChoice.nextInt();
+				//System.out.println(" Illegal column Choice, try again! ");
+					this.frameGame.waitClick();
+				columnChoice = this.frameGame.getColumnChoice();
 			}
 			}
 			while ( inGrid == false);
 			
-			
-			System.out.println(this.grid);
-			win = this.grid.search4Piece(line,column-1);
+			this.frameGame.changeColor(line, columnChoice, playerTurn);
+			//System.out.println(this.grid);
+			win = this.grid.search4Piece(line,columnChoice);
 		}
 		//columnChoice.close();
 		
@@ -132,6 +140,10 @@ public class Game {
 		return Piece.EMPTYSQUARE;
 			
 		
+	}
+
+	public Grid getGrid() {
+		return grid;
 	}
 
 }
